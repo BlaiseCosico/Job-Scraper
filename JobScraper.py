@@ -1,6 +1,7 @@
 import time
 import pandas as pd
 
+from datetime import datetime
 from collections import defaultdict
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -135,7 +136,9 @@ def find_jobs(link):
     df["Salary"] = salary
     df["Description"] = description
 
-    df.to_excel("Month - Jobstreet Jobs.xlsx")
+
+    month = datetime.today().strftime("%Y-%m")
+    df.to_excel(f"{month} - Jobstreet Jobs.xlsx")
 
     print("Done")
     driver.close()
